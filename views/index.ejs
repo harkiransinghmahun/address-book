@@ -1,0 +1,75 @@
+<%- include("header")%>
+
+    <h1>Address Book</h1>
+
+    <div class="add-container">
+
+        <form action="/" method="post"> 
+
+            <div class="add-label">  <label for="fName">First Name: </label> </div>
+            <input type="text" name="fName" placeholder="Enter your first name" required>
+            <br>
+    
+            <div class="add-label"> <label for="lName">Last Name: </label> </div>
+            <input type="text" name="lName" placeholder="Enter your last name" required>
+            <br>
+    
+            <div class="add-label"> <label for="phone">Phone Number : </label> </div>
+            <input type="tel" name="phone" placeholder="Enter your phone number" required>
+            <br>
+    
+            <div class="add-label"><label for="email">Email: </label></div>
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <br>
+    
+            <div class="button-container"><button type="submit" name="add" value="add" >Add</button> </div>
+            <br>
+    
+        </form>
+
+    </div>
+
+    
+
+    <hr>
+
+    <div class="list-container">
+
+        <h1>Records</h1>
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Phone</td>
+                <td>Email</td>
+            </tr>
+        
+            
+        <% for(var i = 0; i < data.length; i++){ %>
+            <tr>
+                <td><%= data[i].firstName %></td>
+                <td><%= data[i].lastName %></td>
+                <td><%= data[i].phone %></td>
+                <td><%= data[i].email %></td>
+                <td>
+                    <form action="/" method="post">
+                        <button type="submit" name="delete" value= <%= data[i].email %> >Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/update/<%= data[i].email %>" method="post">
+                        <button type="submit" name="update" value= <%= data[i].email %> >Update</button>
+                    </form>
+                </td>
+                      
+            </tr>
+    
+        <% } %>
+    
+        </table>
+    </div>
+
+
+
+
+<%- include("footer")%>

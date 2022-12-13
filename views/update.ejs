@@ -1,0 +1,48 @@
+<%- include("header")%>
+
+<div class="update-container">
+    <h1>List Data</h1>
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+        </tr>
+        <tr>
+            <td><%= entry.firstName %></td>
+            <td><%= entry.lastName %></td>
+            <td><%= entry.phone %></td>
+            <td><%= entry.email %></td>
+        </tr>
+
+    </table>
+
+    <form action="/update" method="post">
+
+        <div class="add-label"> <label for="updateField">Select field to update: </label> </div>
+        <select name="updateField">
+            <option value="firstName">First Name</option>
+            <option value="lastName">Last Name</option>
+            <option value="phone">Phone</option>
+            <!-- <option value="email">Email</option> -->
+        </select>
+        <br>
+
+        <div class="add-label"><label for="input">Input updated value:</label></div>
+        <input type="text" name="input" placeholder="Enter updated value" required>
+        <br>
+
+        <div class="button-container"><button type="submit" name="email" value= <%= entry.email %> >Update</button></div>
+        
+        <br>
+
+
+    </form>
+    <a href="/"><button>Back</button></a>
+    
+</div>
+
+
+
+<%- include("footer")%>
